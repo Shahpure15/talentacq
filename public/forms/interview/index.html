@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Interview</title>
+  <link rel="stylesheet" href="../../style.css">
+</head>
+<body>
+  <div class="system-title">Talent Acquisition and Onboarding</div>
+
+  <div class="outer-card">
+    <div class="module-title">Interview</div>
+
+    <div class="mode-toggle-row">
+      <span class="mode-label">Sequential Navigation Only</span>
+    </div>
+
+    <div class="id-message-row">
+      <div class="id-badge">Record ID: <span id="display-id">--</span></div>
+      <div id="message" class="message message-placeholder"></div>
+    </div>
+
+    <div class="form-body">
+<div class="form-row-double">
+        <div class="form-col">
+          <label for="application-id">Application <span class="required">*</span></label>
+          <select id="application-id"></select>
+        </div>
+        <div class="form-col">
+          <label for="round-id">Interview Round <span class="required">*</span></label>
+          <select id="round-id"></select>
+        </div>
+      </div>
+      <div class="form-row-double">
+        <div class="form-col">
+          <label for="interviewer-employee-id">Interviewer</label>
+          <select id="interviewer-employee-id"></select>
+        </div>
+        <div class="form-col">
+          <label for="interview-date">Interview Date</label>
+          <input type="datetime-local" id="interview-date">
+        </div>
+      </div>
+      <div class="form-row-double">
+        <div class="form-col">
+          <label for="status">Status</label>
+          <select id="status">
+            <option value="Scheduled">Scheduled</option>
+            <option value="Completed">Completed</option>
+            <option value="Cancelled">Cancelled</option>
+          </select>
+        </div>
+        <div class="form-col">
+          <label for="score">Score</label>
+          <input type="number" id="score" step="0.1" min="0" max="100">
+        </div>
+      </div>
+      <div class="form-row-double">
+        <div class="form-col">
+          <label for="feedback">Feedback</label>
+          <textarea id="feedback"></textarea>
+        </div>
+      </div>
+    </div>
+
+    <div class="bottom-buttons">
+      <button type="button" class="btn-prev" onclick="handlePrevious()">Previous</button>
+      <button type="button" id="save-btn" class="btn-save" onclick="handleSave()">Save</button>
+      <button type="button" class="btn-next" onclick="handleNext()">Next</button>
+      <button type="button" class="btn-exit" onclick="handleExit()">Exit</button>
+    </div>
+  </div>
+
+  <script src="../../common.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

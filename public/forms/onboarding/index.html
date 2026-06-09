@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Onboarding</title>
+  <link rel="stylesheet" href="../../style.css">
+</head>
+<body>
+  <div class="system-title">Talent Acquisition and Onboarding</div>
+
+  <div class="outer-card">
+    <div class="module-title">Onboarding</div>
+
+    <div class="mode-toggle-row">
+      <span class="mode-label">Sequential Navigation Only</span>
+    </div>
+
+    <div class="id-message-row">
+      <div class="id-badge">Record ID: <span id="display-id">--</span></div>
+      <div id="message" class="message message-placeholder"></div>
+    </div>
+
+    <div class="form-body">
+<div class="form-row-double">
+        <div class="form-col">
+          <label for="candidate-id">Candidate <span class="required">*</span></label>
+          <select id="candidate-id"></select>
+        </div>
+        <div class="form-col">
+          <label for="offer-id">Offer Reference</label>
+          <select id="offer-id"></select>
+        </div>
+      </div>
+      <div class="form-row-double">
+        <div class="form-col">
+          <label for="start-date">Start Date</label>
+          <input type="date" id="start-date">
+        </div>
+        <div class="form-col">
+          <label for="expected-completion-date">Expected Completion Date</label>
+          <input type="date" id="expected-completion-date">
+        </div>
+      </div>
+      <div class="form-row-double">
+        <div class="form-col">
+          <label for="status">Status</label>
+          <select id="status">
+            <option value="In Progress">In Progress</option>
+            <option value="Completed">Completed</option>
+            <option value="Terminated">Terminated</option>
+          </select>
+        </div>
+        <div class="form-col" style="visibility:hidden;"></div>
+      </div>
+    </div>
+
+    <div class="bottom-buttons">
+      <button type="button" class="btn-prev" onclick="handlePrevious()">Previous</button>
+      <button type="button" id="save-btn" class="btn-save" onclick="handleSave()">Save</button>
+      <button type="button" class="btn-next" onclick="handleNext()">Next</button>
+      <button type="button" class="btn-exit" onclick="handleExit()">Exit</button>
+    </div>
+  </div>
+
+  <script src="../../common.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

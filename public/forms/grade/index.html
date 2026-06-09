@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Grade</title>
+  <link rel="stylesheet" href="../../style.css">
+</head>
+<body>
+  <div class="system-title">Talent Acquisition and Onboarding</div>
+
+  <div class="outer-card">
+    <div class="module-title">Grade</div>
+
+    <div class="mode-toggle-row">
+      <button type="button" id="mode-toggle-btn" class="btn-mode-find" onclick="toggleMode()">Find</button>
+      <span id="mode-label" class="mode-label">New Entry</span>
+    </div>
+
+    <div class="id-message-row">
+      <div class="id-badge">Record ID: <span id="display-id">--</span></div>
+      <div id="message" class="message message-placeholder"></div>
+    </div>
+
+    <div class="form-body">
+<div class="form-row-double">
+        <div class="form-col">
+          <label for="grade-code">
+            Grade Code <span class="required">*</span>
+            <span class="info-btn" title="A short unique code for this grade level. Example: L4, L5, M1">ⓘ</span>
+          </label>
+          <input type="text" id="grade-code" oninput="handleCodeInput(this.value)">
+        </div>
+        <div class="form-col">
+          <label for="grade-name">
+            Grade Name <span class="required">*</span>
+            <span class="info-btn" title="Full descriptive name of the grade">ⓘ</span>
+          </label>
+          <input type="text" id="grade-name">
+        </div>
+      </div>
+
+      <div class="form-row-double">
+        <div class="form-col">
+          <label for="band-min-salary">
+            Minimum Salary
+            <span class="info-btn" title="Minimum salary threshold for this grade">ⓘ</span>
+          </label>
+          <input type="number" id="band-min-salary" min="0">
+        </div>
+        <div class="form-col">
+          <label for="band-max-salary">
+            Maximum Salary
+            <span class="info-btn" title="Maximum salary threshold for this grade">ⓘ</span>
+          </label>
+          <input type="number" id="band-max-salary" min="0">
+        </div>
+      </div>
+
+      <div class="form-row-double">
+        <div class="form-col">
+          <label for="currency-code">
+            Currency
+            <span class="info-btn" title="Currency for the salary band (e.g., USD, INR)">ⓘ</span>
+          </label>
+          <input type="text" id="currency-code" maxlength="10">
+        </div>
+        <div class="form-col">
+          <label for="is-active">
+            Status
+            <span class="info-btn" title="1 for Active, 0 for Inactive">ⓘ</span>
+          </label>
+          <select id="is-active">
+            <option value="1">1</option>
+            <option value="0">0</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <div class="bottom-buttons">
+      <button type="button" class="btn-prev" onclick="handlePrevious()">Previous</button>
+      <button type="button" id="save-btn" class="btn-save" onclick="handleSave()">Save</button>
+      <button type="button" class="btn-next" onclick="handleNext()">Next</button>
+      <button type="button" class="btn-exit" onclick="handleExit()">Exit</button>
+    </div>
+  </div>
+
+  <script src="../../common.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

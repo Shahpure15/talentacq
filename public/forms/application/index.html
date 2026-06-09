@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Application</title>
+  <link rel="stylesheet" href="../../style.css">
+</head>
+<body>
+  <div class="system-title">Talent Acquisition and Onboarding</div>
+
+  <div class="outer-card">
+    <div class="module-title">Application</div>
+
+    <div class="mode-toggle-row">
+      <button type="button" id="mode-toggle-btn" class="btn-mode-find" onclick="toggleMode()">Find</button>
+      <span id="mode-label" class="mode-label">New Entry</span>
+    </div>
+
+    <div class="id-message-row">
+      <div class="id-badge">Record ID: <span id="display-id">--</span></div>
+      <div id="message" class="message message-placeholder"></div>
+    </div>
+
+    <div class="form-body">
+<div class="form-row-double">
+        <div class="form-col">
+          <label for="application-code">Application Code <span class="required">*</span></label>
+          <input type="text" id="application-code" oninput="handleCodeInput(this.value)">
+        </div>
+        <div class="form-col">
+          <label for="candidate-id">Candidate <span class="required">*</span></label>
+          <select id="candidate-id"></select>
+        </div>
+      </div>
+      <div class="form-row-double">
+        <div class="form-col">
+          <label for="srf-id">SRF Reference</label>
+          <select id="srf-id"></select>
+        </div>
+        <div class="form-col">
+          <label for="application-date">Application Date</label>
+          <input type="date" id="application-date">
+        </div>
+      </div>
+      <div class="form-row-double">
+        <div class="form-col">
+          <label for="current-stage">Current Stage</label>
+          <input type="text" id="current-stage">
+        </div>
+        <div class="form-col">
+          <label for="status">Status</label>
+          <select id="status">
+            <option value="Applied">Applied</option>
+            <option value="In Progress">In Progress</option>
+            <option value="Rejected">Rejected</option>
+            <option value="Offered">Offered</option>
+            <option value="Hired">Hired</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-row-double">
+        <div class="form-col">
+          <label for="resume-parsed-score">Resume Parsed Score</label>
+          <input type="number" id="resume-parsed-score" step="0.1" min="0" max="100">
+        </div>
+      </div>
+      <div class="form-row-double">
+        <div class="form-col">
+          <label for="recruiter-comments">Recruiter Comments</label>
+          <textarea id="recruiter-comments"></textarea>
+        </div>
+      </div>
+    </div>
+
+    <div class="bottom-buttons">
+      <button type="button" class="btn-prev" onclick="handlePrevious()">Previous</button>
+      <button type="button" id="save-btn" class="btn-save" onclick="handleSave()">Save</button>
+      <button type="button" class="btn-next" onclick="handleNext()">Next</button>
+      <button type="button" class="btn-exit" onclick="handleExit()">Exit</button>
+    </div>
+  </div>
+
+  <script src="../../common.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

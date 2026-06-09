@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Recruitment Vendor</title>
+  <link rel="stylesheet" href="../../style.css">
+</head>
+<body>
+  <div class="system-title">Talent Acquisition and Onboarding</div>
+
+  <div class="outer-card">
+    <div class="module-title">Recruitment Vendor</div>
+
+    <div class="mode-toggle-row">
+      <button type="button" id="mode-toggle-btn" class="btn-mode-find" onclick="toggleMode()">Find</button>
+      <span id="mode-label" class="mode-label">New Entry</span>
+    </div>
+
+    <div class="id-message-row">
+      <div class="id-badge">Record ID: <span id="display-id">--</span></div>
+      <div id="message" class="message message-placeholder"></div>
+    </div>
+
+    <div class="form-body">
+<div class="form-row-double">
+        <div class="form-col">
+          <label for="vendor-code">Vendor Code <span class="required">*</span><span class="info-btn" title="Unique code for this vendor">ⓘ</span></label>
+          <input type="text" id="vendor-code" oninput="handleCodeInput(this.value)">
+        </div>
+        <div class="form-col">
+          <label for="vendor-name">Vendor Name <span class="required">*</span><span class="info-btn" title="Full vendor name">ⓘ</span></label>
+          <input type="text" id="vendor-name">
+        </div>
+      </div>
+      <div class="form-row-double">
+        <div class="form-col">
+          <label for="contact-person">Contact Person<span class="info-btn" title="Primary contact person">ⓘ</span></label>
+          <input type="text" id="contact-person">
+        </div>
+        <div class="form-col">
+          <label for="contact-email">Contact Email<span class="info-btn" title="Email of the primary contact">ⓘ</span></label>
+          <input type="email" id="contact-email">
+        </div>
+      </div>
+      <div class="form-row-double">
+        <div class="form-col">
+          <label for="contact-phone">Contact Phone<span class="info-btn" title="Phone number">ⓘ</span></label>
+          <input type="text" id="contact-phone">
+        </div>
+        <div class="form-col">
+          <label for="is-active">Status<span class="info-btn" title="1 for Active, 0 for Inactive">ⓘ</span></label>
+          <select id="is-active"><option value="1">1</option><option value="0">0</option></select>
+        </div>
+      </div>
+      <div class="form-row-double">
+        <div class="form-col">
+          <label for="contract-start-date">Contract Start Date<span class="info-btn" title="Vendor contract start date">ⓘ</span></label>
+          <input type="date" id="contract-start-date">
+        </div>
+        <div class="form-col">
+          <label for="contract-end-date">Contract End Date<span class="info-btn" title="Vendor contract end date">ⓘ</span></label>
+          <input type="date" id="contract-end-date">
+        </div>
+      </div>
+    </div>
+
+    <div class="bottom-buttons">
+      <button type="button" class="btn-prev" onclick="handlePrevious()">Previous</button>
+      <button type="button" id="save-btn" class="btn-save" onclick="handleSave()">Save</button>
+      <button type="button" class="btn-next" onclick="handleNext()">Next</button>
+      <button type="button" class="btn-exit" onclick="handleExit()">Exit</button>
+    </div>
+  </div>
+
+  <script src="../../common.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

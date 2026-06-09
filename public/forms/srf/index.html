@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Staffing Request Form (SRF)</title>
+  <link rel="stylesheet" href="../../style.css">
+  <style>
+/* Lookup Modal Styles */
+    .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 1000; }
+    .modal-content { background: white; margin: 10% auto; padding: 20px; width: 80%; max-width: 600px; border-radius: 8px; }
+    .modal-header { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #ddd; padding-bottom: 10px; margin-bottom: 15px; }
+    .close-btn { cursor: pointer; font-size: 24px; font-weight: bold; color: #666; }
+    .search-row { display: flex; gap: 10px; margin-bottom: 15px; }
+    .search-row input { flex: 1; padding: 8px; border: 1px solid #ccc; border-radius: 4px; }
+    .lookup-table { width: 100%; border-collapse: collapse; }
+    .lookup-table th, .lookup-table td { padding: 10px; border-bottom: 1px solid #eee; text-align: left; }
+    .lookup-table tr { cursor: pointer; }
+    .lookup-table tr:hover { background: #f5f9ff; }
+    .lookup-btn { background: #e2e8f0; border: 1px solid #cbd5e1; padding: 0 10px; border-radius: 4px; cursor: pointer; margin-left: 5px; font-size: 16px; display: inline-flex; align-items: center; justify-content: center; height: 40px; }
+    .lookup-btn:hover { background: #cbd5e1; }
+    .input-with-lookup { display: flex; align-items: center; }
+    .input-with-lookup input, .input-with-lookup select { flex: 1; }
+  </style>
+</head>
+<body>
+  <div class="system-title">Talent Acquisition and Onboarding</div>
+
+  <div class="outer-card">
+    <div class="module-title">Staffing Request Form (SRF)</div>
+
+    <div class="mode-toggle-row">
+      <button type="button" id="mode-toggle-btn" class="btn-mode-find" onclick="toggleMode()">Find</button>
+      <span id="mode-label" class="mode-label">New Entry</span>
+    </div>
+
+    <div class="id-message-row">
+      <div class="id-badge">Record ID: <span id="display-id">--</span></div>
+      <div id="message" class="message message-placeholder"></div>
+    </div>
+
+    <div class="form-body">
+<div class="form-row-double">
+        <div class="form-col">
+          <label for="srf-number">SRF Number <span class="required">*</span></label>
+          <input type="text" id="srf-number" oninput="handleCodeInput(this.value)">
+        </div>
+        <div class="form-col">
+          <label for="demand-id">Demand Reference</label>
+          <div class="input-with-lookup">
+            <select id="demand-id"></select>
+            <button type="button" class="lookup-btn" onclick="openDemandLookup()" title="Search Demands">🔍</button>
+          </div>
+        </div>
+      </div>
+      <div class="form-row-double">
+        <div class="form-col">
+          <label for="role-id">Role</label>
+          <select id="role-id"></select>
+        </div>
+        <div class="form-col">
+          <label for="vacancies">Vacancies</label>
+          <input type="number" id="vacancies" min="1">
+        </div>
+      </div>
+      <div class="form-row-double">
+        <div class="form-col">
+          <label for="min-experience-years">Min Experience (Years)</label>
+          <input type="number" id="min-experience-years" min="0" step="0.5">
+        </div>
+        <div class="form-col">
+          <label for="max-experience-years">Max Experience (Years)</label>
+          <input type="number" id="max-experience-years" min="0" step="0.5">
+        </div>
+      </div>
+      <div class="form-row-double">
+        <div class="form-col">
+          <label for="required-skills">Required Skills</label>
+          <textarea id="required-skills"></textarea>
+        </div>
+      </div>
+      <div class="form-row-double">
+        <div class="form-col">
+          <label for="target-date">Target Date</label>
+          <input type="date" id="target-date">
+        </div>
+        <div class="form-col">
+          <label for="status">Status</label>
+          <select id="status">
+            <option value="Open">Open</option>
+            <option value="Hold">Hold</option>
+            <option value="Closed">Closed</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <div class="bottom-buttons">
+      <button type="button" class="btn-prev" onclick="handlePrevious()">Previous</button>
+      <button type="button" id="save-btn" class="btn-save" onclick="handleSave()">Save</button>
+      <button type="button" class="btn-next" onclick="handleNext()">Next</button>
+      <button type="button" class="btn-exit" onclick="handleExit()">Exit</button>
+    </div>
+  </div>
+  <!-- Demand Lookup Modal -->
+  <div id="demand-lookup-modal" class="modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3>Search Demands</h3>
+        <span class="close-btn" onclick="closeDemandLookup()">&times;</span>
+      </div>
+      <div class="search-row">
+        <input type="text" id="demand-lookup-search" placeholder="Type to filter by code..." oninput="filterDemandLookup()">
+      </div>
+      <table class="lookup-table">
+        <thead>
+          <tr>
+            <th>Code</th>
+            <th>Date</th>
+            <th>Positions</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody id="demand-lookup-body"></tbody>
+      </table>
+    </div>
+  </div>
+
+  <script src="../../common.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

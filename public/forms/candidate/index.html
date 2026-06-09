@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Candidate</title>
+  <link rel="stylesheet" href="../../style.css">
+</head>
+<body>
+  <div class="system-title">Talent Acquisition and Onboarding</div>
+
+  <div class="outer-card">
+    <div class="module-title">Candidate</div>
+
+    <div class="mode-toggle-row">
+      <button type="button" id="mode-toggle-btn" class="btn-mode-find" onclick="toggleMode()">Find</button>
+      <span id="mode-label" class="mode-label">New Entry</span>
+    </div>
+
+    <div class="id-message-row">
+      <div class="id-badge">Record ID: <span id="display-id">--</span></div>
+      <div id="message" class="message message-placeholder"></div>
+    </div>
+
+    <div class="form-body">
+<div class="form-row-double">
+        <div class="form-col">
+          <label for="candidate-code">Candidate Code <span class="required">*</span></label>
+          <input type="text" id="candidate-code" oninput="handleCodeInput(this.value)">
+        </div>
+        <div class="form-col">
+          <label for="first-name">First Name <span class="required">*</span></label>
+          <input type="text" id="first-name">
+        </div>
+      </div>
+      <div class="form-row-double">
+        <div class="form-col">
+          <label for="last-name">Last Name</label>
+          <input type="text" id="last-name">
+        </div>
+        <div class="form-col">
+          <label for="email">Email</label>
+          <input type="email" id="email">
+        </div>
+      </div>
+      <div class="form-row-double">
+        <div class="form-col">
+          <label for="phone">Phone</label>
+          <input type="text" id="phone">
+        </div>
+        <div class="form-col" style="visibility:hidden;"></div>
+      </div>
+      <div class="form-row-double">
+        <div class="form-col">
+          <label for="resume-url">Resume Link</label>
+          <input type="url" id="resume-url">
+        </div>
+      </div>
+      <div class="form-row-double">
+        <div class="form-col">
+          <label for="current-employer">Current Employer</label>
+          <input type="text" id="current-employer">
+        </div>
+        <div class="form-col">
+          <label for="current-ctc">Current CTC</label>
+          <input type="number" id="current-ctc">
+        </div>
+      </div>
+      <div class="form-row-double">
+        <div class="form-col">
+          <label for="expected-ctc">Expected CTC</label>
+          <input type="number" id="expected-ctc">
+        </div>
+        <div class="form-col">
+          <label for="notice-period-days">Notice Period (Days)</label>
+          <input type="number" id="notice-period-days">
+        </div>
+      </div>
+      <div class="form-row-double">
+        <div class="form-col">
+          <label for="source-type">Source Type</label>
+          <input type="text" id="source-type">
+        </div>
+        <div class="form-col">
+          <label for="status">Status</label>
+          <select id="status">
+            <option value="Active">Active</option>
+            <option value="Inactive">Inactive</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <div class="bottom-buttons">
+      <button type="button" class="btn-prev" onclick="handlePrevious()">Previous</button>
+      <button type="button" id="save-btn" class="btn-save" onclick="handleSave()">Save</button>
+      <button type="button" class="btn-next" onclick="handleNext()">Next</button>
+      <button type="button" class="btn-exit" onclick="handleExit()">Exit</button>
+    </div>
+  </div>
+
+  <script src="../../common.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

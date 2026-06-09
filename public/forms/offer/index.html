@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Offer</title>
+  <link rel="stylesheet" href="../../style.css">
+</head>
+<body>
+  <div class="system-title">Talent Acquisition and Onboarding</div>
+
+  <div class="outer-card">
+    <div class="module-title">Offer</div>
+
+    <div class="mode-toggle-row">
+      <span class="mode-label">Sequential Navigation Only</span>
+    </div>
+
+    <div class="id-message-row">
+      <div class="id-badge">Record ID: <span id="display-id">--</span></div>
+      <div id="message" class="message message-placeholder"></div>
+    </div>
+
+    <div class="form-body">
+<div class="form-row-double">
+        <div class="form-col">
+          <label for="application-id">Application <span class="required">*</span></label>
+          <select id="application-id"></select>
+        </div>
+        <div class="form-col">
+          <label for="offer-date">Offer Date</label>
+          <input type="date" id="offer-date">
+        </div>
+      </div>
+      <div class="form-row-double">
+        <div class="form-col">
+          <label for="offered-ctc">Offered CTC</label>
+          <input type="number" id="offered-ctc">
+        </div>
+        <div class="form-col">
+          <label for="joining-date">Joining Date</label>
+          <input type="date" id="joining-date">
+        </div>
+      </div>
+      <div class="form-row-double">
+        <div class="form-col">
+          <label for="status">Offer Status</label>
+          <select id="status">
+            <option value="Pending">Pending</option>
+            <option value="Accepted">Accepted</option>
+            <option value="Declined">Declined</option>
+            <option value="Revoked">Revoked</option>
+          </select>
+        </div>
+        <div class="form-col">
+          <label for="valid-till">Valid Till</label>
+          <input type="date" id="valid-till">
+        </div>
+      </div>
+    </div>
+
+    <div class="bottom-buttons">
+      <button type="button" class="btn-prev" onclick="handlePrevious()">Previous</button>
+      <button type="button" id="save-btn" class="btn-save" onclick="handleSave()">Save</button>
+      <button type="button" class="btn-next" onclick="handleNext()">Next</button>
+      <button type="button" class="btn-exit" onclick="handleExit()">Exit</button>
+    </div>
+  </div>
+
+  <script src="../../common.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

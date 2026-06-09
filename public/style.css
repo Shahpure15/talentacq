@@ -1,0 +1,346 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background: #eef2f7;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  padding: 40px 20px;
+}
+
+/* ── System Title ABOVE the box ───────────────────────────── */
+
+.system-title {
+  width: 450px;
+  background: #d6e4f7;
+  color: #1a3a5c;
+  padding: 14px;
+  border-radius: 8px;
+  text-align: center;
+  font-size: 22px;
+  font-weight: bold;
+  letter-spacing: 0.3px;
+}
+
+/* ── Outer Card ───────────────────────────────────────────── */
+
+.outer-card {
+  width: 750px;
+  background: white;
+  padding: 30px 40px 36px 40px;
+  border: 1px solid #b0c4de;
+  border-radius: 20px;
+  box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.15);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+/* ── Module Title inside box ──────────────────────────────── */
+
+.module-title {
+  width: 300px;
+  background: #2c5f9e;
+  color: white;
+  padding: 12px;
+  border-radius: 8px;
+  text-align: center;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+/* ── Message box — always reserved at fixed height ───────── */
+
+.message {
+  width: 100%;
+  padding: 10px 16px;
+  border-radius: 8px;
+  font-size: 15px;
+  font-weight: bold;
+  text-align: center;
+  min-height: 42px;
+  /* Fixed height so form never shifts when message appears or disappears */
+}
+
+.message-placeholder {
+  /* Invisible placeholder — holds space so layout stays stable */
+  background: transparent;
+  border: none;
+  visibility: hidden;
+}
+
+.message.success {
+  background: #ffffff;
+  color: #1a6630;
+  visibility: visible;
+}
+
+.message.error {
+  background: #ffffff;
+  color: #8b1a1a;
+  visibility: visible;
+}
+
+.message.info {
+  background: #ffffff;
+  color: #1a3a5c;
+  visibility: visible;
+}
+
+/* ── ID Badge always visible ──────────────────────────────── */
+
+.id-badge {
+  background: #f0f7ff;
+  border: 1px solid #a8c8f0;
+  border-radius: 8px;
+  padding: 7px 18px;
+  font-size: 14px;
+  font-weight: bold;
+  color: #2c5f9e;
+  align-self: flex-start;
+  /* Always visible — shows -- until a record is loaded */
+}
+.id-message-row {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  width: 100%;
+}
+
+.id-message-row .message {
+  flex: 1;
+  min-height: 36px;
+  margin: 0;
+  padding: 7px 14px;
+}
+/* ── Form ─────────────────────────────────────────────────── */
+
+.form-body {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+
+.form-row {
+  display: flex;
+  align-items: center;
+  gap: 0;
+}
+
+.form-row label {
+  width: 200px;
+  font-size: 18px;
+  font-weight: bold;
+  color: #222;
+  flex-shrink: 0;
+}
+
+.required {
+  color: red;
+  margin-left: 2px;
+}
+
+.form-row input,
+.form-row select {
+  flex: 1;
+  height: 40px;
+  padding: 8px 12px;
+  border: 1.5px solid #c0d4ec;
+  border-radius: 8px;
+  background: #f7faff;
+  font-size: 16px;
+  color: #222;
+  box-sizing: border-box;
+  transition: border-color 0.2s, background 0.2s;
+}
+
+.form-row input:focus,
+.form-row select:focus {
+  outline: none;
+  border-color: #2c5f9e;
+  background: #ffffff;
+}
+
+/* Green tint when auto-filled from DB */
+.form-row input.fetched,
+.form-row select.fetched {
+  background: #f0fff4;
+  border-color: #52b788;
+}
+
+/* ── Buttons ──────────────────────────────────────────────── */
+
+.bottom-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 10px;
+}
+
+.bottom-buttons button {
+  width: 150px;
+  padding: 12px;
+  border: none;
+  border-radius: 6px;
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: opacity 0.2s, transform 0.1s;
+}
+
+.bottom-buttons button:hover  { opacity: 0.9; }
+.bottom-buttons button:active { transform: scale(0.97); }
+
+.btn-save             { background: #198754; color: white; }
+.btn-save.update-mode { background: #e65100; color: white; }
+.btn-next             { background: #0d6efd; color: white; }
+.btn-exit             { background: #dc3545; color: white; }
+
+.form-row input.sized,
+.form-row select.sized {
+  flex: none;
+}
+
+/* Added Generic Form Styling */
+.form-row-double {
+  display: flex;
+  gap: 24px;
+  width: 100%;
+}
+.form-col {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  flex: 1;
+}
+.form-col label {
+  font-size: 16px;
+  font-weight: bold;
+  color: #222;
+}
+.form-col input,
+.form-col select,
+.form-col textarea {
+  height: 40px;
+  padding: 8px 12px;
+  border: 1.5px solid #c0d4ec;
+  border-radius: 8px;
+  background: #f7faff;
+  font-size: 15px;
+  font-family: inherit;
+}
+.form-col textarea {
+  height: 80px;
+  resize: vertical;
+}
+.form-col input.fetched,
+.form-col select.fetched,
+.form-col textarea.fetched {
+  background: #f0fff4;
+  border-color: #52b788;
+}
+.info-btn {
+  display: inline-block;
+  font-size: 13px;
+  color: #2c5f9e;
+  cursor: help;
+  margin-left: 4px;
+  opacity: 0.7;
+}
+.info-btn:hover { opacity: 1; }
+
+/* Mode Toggle Row */
+.mode-toggle-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  margin-bottom: 4px;
+}
+.mode-label {
+  font-size: 14px;
+  color: #555;
+  font-weight: bold;
+}
+.btn-mode-find {
+  padding: 7px 18px;
+  border: none;
+  border-radius: 6px;
+  background: #0d6efd;
+  color: white;
+  font-size: 14px;
+  font-weight: bold;
+  cursor: pointer;
+}
+.btn-mode-new {
+  padding: 7px 18px;
+  border: none;
+  border-radius: 6px;
+  background: #198754;
+  color: white;
+  font-size: 14px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+/* System Title & Dashboard Styles */
+.system-title {
+  text-align: center;
+  font-size: 28px;
+  font-weight: bold;
+  margin: 20px 0;
+  color: #112d4e;
+}
+.dashboard-container {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 20px;
+}
+.dashboard-section h2 {
+  color: #3f72af;
+  border-bottom: 2px solid #dbe2ef;
+  padding-bottom: 10px;
+  margin-bottom: 20px;
+}
+.nav-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 15px;
+}
+.nav-card {
+  display: block;
+  background: white;
+  padding: 20px;
+  text-align: center;
+  border-radius: 8px;
+  text-decoration: none;
+  color: #112d4e;
+  font-weight: bold;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+  border: 1px solid #dbe2ef;
+  transition: all 0.2s ease;
+}
+.nav-card:hover {
+  background: #f9fbfd;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+  color: #3f72af;
+}
+
+.btn-prev { background: #6c757d; color: #fff; padding: 10px 20px; border: none; border-radius: 6px; font-weight: bold; cursor: pointer; }
+.btn-prev:hover { background: #5c636a; }
+

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SRF Sourcing</title>
+  <link rel="stylesheet" href="../../style.css">
+</head>
+<body>
+  <div class="system-title">Talent Acquisition and Onboarding</div>
+
+  <div class="outer-card">
+    <div class="module-title">SRF Sourcing</div>
+
+    <div class="mode-toggle-row">
+      <button type="button" id="mode-toggle-btn" class="btn-mode-find" onclick="toggleMode()">Find</button>
+      <span id="mode-label" class="mode-label">New Entry</span>
+    </div>
+
+    <div class="id-message-row">
+      <div class="id-badge">Record ID: <span id="display-id">--</span></div>
+      <div id="message" class="message message-placeholder"></div>
+    </div>
+
+    <div class="form-body">
+<div class="form-row-double">
+        <div class="form-col">
+          <label for="sourcing-reference">Sourcing Ref <span class="required">*</span></label>
+          <input type="text" id="sourcing-reference" oninput="handleCodeInput(this.value)">
+        </div>
+        <div class="form-col">
+          <label for="channel-id">Sourcing Channel</label>
+          <select id="channel-id"></select>
+        </div>
+      </div>
+      <div class="form-row-double">
+        <div class="form-col">
+          <label for="vendor-id">Vendor Assigned</label>
+          <select id="vendor-id"></select>
+        </div>
+        <div class="form-col">
+          <label for="referrer-employee-id">Referrer Employee</label>
+          <select id="referrer-employee-id"></select>
+        </div>
+      </div>
+      <div class="form-row-double">
+        <div class="form-col">
+          <label for="activation-date">Activation Date</label>
+          <input type="date" id="activation-date">
+        </div>
+        <div class="form-col">
+          <label for="deactivation-date">Deactivation Date</label>
+          <input type="date" id="deactivation-date">
+        </div>
+      </div>
+      <div class="form-row-double">
+        <div class="form-col">
+          <label for="srf-id">SRF Reference</label>
+          <select id="srf-id"></select>
+        </div>
+        <div class="form-col">
+          <label for="status">Status</label>
+          <select id="status">
+            <option value="Active">Active</option>
+            <option value="Closed">Closed</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-row-double">
+        <div class="form-col">
+          <label for="posting-url">Posting URL</label>
+          <input type="url" id="posting-url">
+        </div>
+      </div>
+    </div>
+
+    <div class="bottom-buttons">
+      <button type="button" class="btn-prev" onclick="handlePrevious()">Previous</button>
+      <button type="button" id="save-btn" class="btn-save" onclick="handleSave()">Save</button>
+      <button type="button" class="btn-next" onclick="handleNext()">Next</button>
+      <button type="button" class="btn-exit" onclick="handleExit()">Exit</button>
+    </div>
+  </div>
+
+  <script src="../../common.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
