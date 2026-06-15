@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Talent Acquisition and Onboarding</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="page-wrapper">
+
+    <div class="outer-card">
+
+      <div class="system-title">Talent Acquisition and Onboarding</div>
+      <div class="module-title">Demand Entry</div>
+
+      <div class="inner-box">
+
+        <div class="form-body">
+
+          <div class="id-message-row">
+            <div class="id-badge">Record ID: <span id="display-id">--</span></div>
+            <div id="message" class="message"></div>
+          </div>
+          <br>
+
+          <div class="form-grid">
+
+            <div class="form-row">
+              <label for="demand-code">Demand Code <span class="required">*</span>
+                <span class="info-btn" tabindex="0">ⓘ<span class="tooltip">A unique code identifying this demand entry.</span></span>
+              </label>
+              <input type="text" id="demand-code" class="input-full" maxlength="15" autocomplete="off" oninput="handleCodeInput(this.value)" />
+            </div>
+<div class="form-row">
+  <label for="demand-type">Demand Type <span class="required">*</span>
+    <span class="info-btn" tabindex="0">ⓘ<span class="tooltip">Category of this hiring demand.</span></span>
+  </label>
+  <div class="demand-type-wrapper input-full">
+    <select id="demand-type" required>
+      <option value=""> </option>
+      <option value="ProjectBased">Project Based</option>
+      <option value="Bench">Bench</option>
+      <option value="Proactive">Proactive</option>
+    </select>
+    <input type="text" id="new-demand-type-input" placeholder=" " maxlength="30" />
+    <button class="btn-add-type" title="Add new demand type" onclick="addDemandType()">+</button>
+  </div>
+</div>
+
+            <div class="form-row">
+              <label for="raised-by-employee-id">Raised By <span class="required">*</span>
+                <span class="info-btn" tabindex="0">ⓘ<span class="tooltip">The employee who raised this demand.</span></span>
+              </label>
+              <select id="raised-by-employee-id" class="input-full" required>
+                <option value="">  </option>
+              </select>
+            </div>
+
+            <div class="form-row">
+              <label for="practice-id">Practice <span class="required">*</span>
+                <span class="info-btn" tabindex="0">ⓘ<span class="tooltip">The department this demand belongs to.</span></span>
+              </label>
+              <select id="practice-id" class="input-full" required>
+                <option value=""> </option>
+              </select>
+            </div>
+
+            <div class="form-row">
+              <label for="role-id">Role <span class="required">*</span>
+                <span class="info-btn" tabindex="0">ⓘ<span class="tooltip">The job role being demanded.</span></span>
+              </label>
+              <select id="role-id" class="input-full" required>
+                <option value=""> </option>
+              </select>
+            </div>
+
+            <div class="form-row">
+              <label for="ta-reviewer-id">TA Reviewer <span class="required">*</span>
+                <span class="info-btn" tabindex="0">ⓘ<span class="tooltip">Talent Acquisition member reviewing this demand.</span></span>
+              </label>
+              <select id="ta-reviewer-id" class="input-full" required>
+                <option value=""> </option>
+              </select>
+            </div>
+
+            <div class="form-row">
+              <label for="number-of-positions">Positions <span class="required">*</span>
+                <span class="info-btn" tabindex="0">ⓘ<span class="tooltip">Number of openings required for this demand.</span></span>
+              </label>
+              <input type="number" id="number-of-positions" class="input-full" min="1" max="999" />
+            </div>
+
+            <div class="form-row">
+              <label for="priority">Priority <span class="required">*</span>
+                <span class="info-btn" tabindex="0">ⓘ<span class="tooltip">Urgency level of this demand.</span></span>
+              </label>
+              <select id="priority" class="input-full" required>
+                <option value=""> </option>
+                <option value="Critical">Critical</option>
+                <option value="High">High</option>
+                <option value="Medium">Medium</option>
+                <option value="Low">Low</option>
+              </select>
+            </div>
+
+            <div class="form-row">
+              <label for="demand-status">Status <span class="required">*</span>
+                <span class="info-btn" tabindex="0">ⓘ<span class="tooltip">Current stage of this demand.</span></span>
+              </label>
+              <select id="demand-status" class="input-full" required>
+                <option value=""> </option>
+                <option value="New">New</option>
+                <option value="Consolidated">Consolidated</option>
+                <option value="SRFCreated">SRF Created</option>
+              </select>
+            </div>
+
+            <div class="form-row">
+              <label for="demand-date">Demand Date <span class="required">*</span>
+                <span class="info-btn" tabindex="0">ⓘ<span class="tooltip">Date on which this demand was raised.</span></span>
+              </label>
+              <input type="date" id="demand-date" class="input-full" required />
+            </div>
+
+            <div class="form-row col-span-2">
+              <label for="remarks">Remarks
+                <span class="info-btn" tabindex="0">ⓘ<span class="tooltip">Any additional notes or context for this demand.</span></span>
+              </label>
+              <textarea id="remarks" class="input-full" rows="2"
+                oninput="this.style.height='auto'; this.style.height=this.scrollHeight+'px'"></textarea>
+            </div>
+
+          </div><!-- /form-grid -->
+
+        </div><!-- /form-body -->
+
+      </div><!-- /inner-box -->
+
+    </div><!-- /outer-card -->
+
+    <!-- Buttons OUTSIDE outer card -->
+    <div class="bottom-buttons">
+      <button id="save-btn" class="btn-save" onclick="handleSave()">Save</button>
+      <button class="btn-prev" onclick="handlePrev()">← Prev</button>
+      <button class="btn-next" onclick="handleNext()">Next →</button>
+      <button class="btn-exit" onclick="handleExit()">Exit</button>
+    </div>
+
+  </div><!-- /page-wrapper -->
+
+  <script src="app.js"></script>
+</body>
+</html>

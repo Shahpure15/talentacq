@@ -1,0 +1,403 @@
+/* ── Reset ── */
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+/* ── Tokens ── */
+:root {
+  --clr-brand:        #2c5f9e;
+  --clr-brand-light:  #3a75bb;
+  --clr-brand-soft:   #b0c4de;
+  --clr-brand-bg:     #d6e4f7;
+
+  --clr-page-bg:      #eef2f7;
+  --clr-card-bg:      #ffffff;
+  --clr-inner-bg:     #f4f8ff;
+  --clr-border:       #b0c4de;
+  --clr-border-focus: #2c5f9e;
+
+  --clr-text-primary: #1a2a3a;
+  --clr-text-label:   #1a3a5c;
+  --clr-required:     #c0392b;
+  --clr-input-bg:     #f7faff;
+  --clr-fetched-bg:   #f0fff4;
+  --clr-fetched-bd:   #52b788;
+
+  --clr-btn-save:   #198754;
+  --clr-btn-nav:    #2c5f9e;
+  --clr-btn-exit:   #dc3545;
+  --clr-btn-update: #e65100;
+
+  --clr-success-bg:  #d1fae5; --clr-success-txt: #065f46;
+  --clr-error-bg:    #fee2e2; --clr-error-txt:   #991b1b;
+  --clr-info-bg:     #dbeafe; --clr-info-txt:    #1e40af;
+
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+  --radius-xl: 22px;
+
+  --shadow-card:  0 2px 16px rgba(44,95,158,0.10);
+  --shadow-inner: inset 0 1px 3px rgba(44,95,158,0.07);
+  --shadow-btn:   0 1px 4px rgba(0,0,0,0.12);
+
+  --font-base: 'Segoe UI', Arial, sans-serif;
+  --fs-sm:   11px;
+  --fs-base: 13px;
+  --fs-md:   14px;
+  --fs-lg:   16px;
+  --fs-xl:   18px;
+
+  --label-w: 148px;
+  --input-h:  32px;
+  --gap-row:  12px;
+  --gap-col:  36px;
+
+  --btn-bar-h:     50px;
+  --gap-card-btn:  10px;
+}
+
+/* ── Body ── */
+body {
+  font-family: var(--font-base);
+  background: var(--clr-page-bg);
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--clr-text-primary);
+}
+
+/* ── Page wrapper: card + buttons stacked, 20px from all sides ── */
+.page-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--gap-card-btn);
+  width:  calc(100vw - 40px);
+  height: calc(100vh - 40px);
+}
+
+/* ── Outer Card ── fixed, non-scrollable ── */
+/* ── Outer Card ── fixed, non-scrollable ── */
+.outer-card {
+  width: 100%;
+  height: calc(100% - var(--btn-bar-h) - var(--gap-card-btn));
+  background: var(--clr-card-bg);
+  border: 1.5px solid var(--clr-border);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-card);
+  padding: 12px 20px 14px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start; /* titles upar rahein */
+  gap: 8px;
+  overflow: hidden;
+}
+
+/* ── Titles ── */
+.system-title {
+  width: 48%;
+  background: var(--clr-brand);
+  color: #fff;
+  padding: 8px 14px;
+  border-radius: var(--radius-md);
+  text-align: center;
+  font-size: var(--fs-xl);
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.module-title {
+  width: min(300px, 100%);
+  background: var(--clr-brand-light);
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: var(--radius-md);
+  text-align: center;
+  font-size: var(--fs-lg);
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+/* ── ID + Message ── */
+.id-message-row {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  width: 100%;
+  flex-shrink: 0;
+}
+
+.id-badge {
+  border: 1px solid var(--clr-brand-soft);
+  border-radius: var(--radius-sm);
+  padding: 5px 14px;
+  font-size: var(--fs-sm);
+  font-weight: 700;
+  color: var(--clr-brand);
+  white-space: nowrap;
+  /* background: var(--clr-brand-bg); */
+}
+
+.message {
+  flex: 1;
+  min-height: 28px;
+  padding: 4px 14px;
+  border-radius: var(--radius-sm);
+  font-size: var(--fs-base);
+  font-weight: 600;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  visibility: hidden;
+}
+.message.success { background: var(--clr-success-bg); color: var(--clr-success-txt); visibility: visible; }
+.message.error   { background: var(--clr-error-bg);   color: var(--clr-error-txt);   visibility: visible; }
+.message.info    { background: var(--clr-info-bg);    color: var(--clr-info-txt);    visibility: visible; }
+
+/* ── Inner Box: just a visual outline, NO scroll ── */
+.inner-box {
+  width: 70%;
+  /* flex: ; */
+  min-height: 1;
+  /* background: var(--clr-inner-bg); */
+  border: 2.5px solid var(--clr-brand-soft);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-inner);
+  padding: 60px 20px;
+  overflow: hidden;   /* NO scrolling */
+  display: flex;
+   margin: auto; /* ← yeh vertically + horizontally center kar dega remaining space mein */
+  flex-direction: column;
+  justify-content: center;  /* vertically center fields */
+}
+
+/* ── Form body ── */
+.form-body {
+  width: 100%;
+}
+
+/* ── 2-column grid for many fields ── */
+.form-grid {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--gap-row) var(--gap-col);
+}
+
+.col-span-2 {
+  grid-column: 1 / -1;
+}
+
+/* ── Form row ── */
+.form-row {
+  display: flex;
+  align-items: center;
+  min-width: 0;
+}
+
+.form-row label {
+  width: var(--label-w);
+  min-width: var(--label-w);
+  font-size: var(--fs-base);
+  font-weight: 600;
+  color: var(--clr-text-label);
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  flex-shrink: 0;
+}
+
+.required { color: var(--clr-required); font-size: 13px; }
+
+/* ── Inputs & Selects ── */
+.form-row input,
+.form-row select {
+  height: var(--input-h);
+  padding: 0 9px;
+  border: 1.5px solid var(--clr-border);
+  border-radius: var(--radius-sm);
+  /* background: var(--clr-input-bg); */
+  font-size: var(--fs-base);
+  color: var(--clr-text-primary);
+  font-family: var(--font-base);
+  transition: border-color 0.18s, background 0.18s, box-shadow 0.18s;
+  outline: none;
+}
+
+.form-row input:focus,
+.form-row select:focus {
+  border-color: var(--clr-border-focus);
+  background: #fff;
+  box-shadow: 0 0 0 3px rgba(44,95,158,0.13);
+}
+
+.form-row input.fetched,
+.form-row select.fetched {
+  background: var(--clr-fetched-bg);
+  border-color: var(--clr-fetched-bd);
+}
+
+/* Inside grid, inputs take remaining flex space */
+/* With this */
+.form-grid .form-row input,
+.form-grid .form-row select {
+  flex: 1;
+  min-width: 0;
+}
+
+/* Currency and positions — don't stretch */
+#currency-code,
+#number-of-positions {
+  flex: none;
+  width: 80px;
+}
+
+#srf-code {
+    flex: none;
+  width: 80px;
+}
+#srf-status{
+    flex: none;
+  width: 160px;
+}
+
+#budget-min,
+#budget-max{
+    flex: none;
+  width: 80px;
+}
+
+#target-join-date,
+#approval-date{
+    flex: none;
+  width: 150px;
+}
+
+#key-skills{
+  flex: none;
+  width: 240px;
+  height: 50px;
+}
+
+.form-row textarea {
+  height: auto;
+  min-height: var(--input-h);
+  padding: 6px 9px;
+  border: 1.5px solid var(--clr-border);
+  border-radius: var(--radius-sm);
+  font-size: var(--fs-base);
+  color: var(--clr-text-primary);
+  font-family: var(--font-base);
+  transition: border-color 0.18s, background 0.18s, box-shadow 0.18s;
+  outline: none;
+  resize: vertical;
+  line-height: 1.5;
+}
+
+.form-row textarea:focus {
+  border-color: var(--clr-border-focus);
+  background: #fff;
+  box-shadow: 0 0 0 3px rgba(44,95,158,0.13);
+}
+
+.form-grid .form-row textarea {
+  flex: 1;
+  min-width: 0;
+}
+
+/* Fixed widths for standalone use */
+.input-xs   { width: 90px; }
+.input-sm   { width: 130px; }
+.input-md   { width: 190px; }
+.input-full { flex: 1; min-width: 0; }
+
+/* ── Info button ── */
+.info-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: none;
+  color: #99a;
+  font-size: 12px;
+  cursor: pointer;
+  flex-shrink: 0;
+  position: relative;
+  padding: 0;
+}
+.info-btn:hover { color: var(--clr-brand); }
+
+.info-btn .tooltip {
+  display: none;
+  position: absolute;
+  left: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 99;
+  background: #1a2a3a;
+  color: #fff;
+  font-size: 11px;
+  font-weight: 400;
+  padding: 6px 10px;
+  border-radius: var(--radius-sm);
+  width: 210px;
+  white-space: normal;
+  line-height: 1.45;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.22);
+  pointer-events: none;
+}
+.info-btn:hover .tooltip,
+.info-btn:focus .tooltip { display: block; }
+
+/* ── Bottom Buttons — outside outer card ── */
+.bottom-buttons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+  height: var(--btn-bar-h);
+  flex-shrink: 0;
+  width: 100%;
+}
+
+.bottom-buttons button {
+  min-width: 110px;
+  height: 40px;
+  padding: 0 28px;
+  border: none;
+  border-radius: var(--radius-sm);
+  color: #fff;
+  font-size: var(--fs-md);
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: var(--shadow-btn);
+  transition: opacity 0.18s, transform 0.12s;
+}
+.bottom-buttons button:hover  { opacity: 0.88; }
+.bottom-buttons button:active { transform: scale(0.97); }
+
+.btn-save             { background: var(--clr-btn-save); }
+.btn-save.update-mode { background: var(--clr-btn-update); }
+.btn-prev             { background: var(--clr-btn-nav); }
+.btn-next             { background: var(--clr-btn-nav); }
+.btn-exit             { background: var(--clr-btn-exit); }
+
+/* ── Responsive ── */
+@media (max-width: 860px) {
+  .form-grid { grid-template-columns: 1fr; }
+  .col-span-2 { grid-column: 1; }
+}
+
+@media (max-width: 600px) {
+  .system-title, .module-title { width: 100%; }
+  .id-message-row { flex-direction: column; align-items: stretch; }
+  .bottom-buttons { gap: 8px; }
+  .bottom-buttons button { min-width: 80px; padding: 0 12px; }
+  .form-row { flex-direction: column; align-items: flex-start; }
+  .form-row label { width: 100%; min-width: unset; margin-bottom: 4px; }
+  .form-row input, .form-row select { width: 100% !important; }
+  .info-btn .tooltip { left: auto; right: 0; top: 24px; transform: none; }
+}

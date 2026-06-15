@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Talent Acquisition and Onboarding</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="page-wrapper">
+
+    <div class="outer-card">
+
+      <div class="system-title">Talent Acquisition and Onboarding</div>
+      <div class="module-title">Onboarding Activity</div>
+
+      <div class="inner-box">
+
+        <div class="form-body">
+
+          <div class="id-message-row">
+            <div class="id-badge">Record ID: <span id="display-id">--</span></div>
+            <div id="message" class="message"></div>
+          </div>
+          <br>
+
+          <div class="form-grid" style="grid-template-columns: 1fr;">
+
+            <div class="form-row">
+              <label for="activity-code">Activity Code <span class="required">*</span>
+                <span class="info-btn" tabindex="0">ⓘ<span class="tooltip">A unique code identifying this onboarding activity.</span></span>
+              </label>
+              <input type="text" id="activity-code" class="input-full" maxlength="20" autocomplete="off" oninput="handleCodeInput(this.value)" />
+            </div>
+
+            <div class="form-row">
+              <label for="activity-name">Activity Name <span class="required">*</span>
+                <span class="info-btn" tabindex="0">ⓘ<span class="tooltip">Name of the onboarding activity to be performed.</span></span>
+              </label>
+              <input type="text" id="activity-name" class="input-full" maxlength="100" autocomplete="off" />
+            </div>
+
+            <div class="form-row">
+              <label for="phase">Phase <span class="required">*</span>
+                <span class="info-btn" tabindex="0">ⓘ<span class="tooltip">The onboarding phase during which this activity occurs.</span></span>
+              </label>
+              <select id="phase" class="input-full">
+                <option value="">-- Select Phase --</option>
+                <option value="PreJoining">Pre Joining</option>
+                <option value="Day1">Day 1</option>
+                <option value="Day30">Day 30</option>
+                <option value="Day60">Day 60</option>
+                <option value="Day90">Day 90</option>
+              </select>
+            </div>
+
+            <div class="form-row">
+              <label for="owner-type">Owner Type <span class="required">*</span>
+                <span class="info-btn" tabindex="0">ⓘ<span class="tooltip">The team or role responsible for completing this activity.</span></span>
+              </label>
+              <select id="owner-type" class="input-full">
+                <option value="">-- Select Owner --</option>
+                <option value="HR">HR</option>
+                <option value="IT">IT</option>
+                <option value="Manager">Manager</option>
+                <option value="Buddy">Buddy</option>
+              </select>
+            </div>
+
+            <div class="form-row">
+              <label for="sla-days">SLA Days
+                <span class="info-btn" tabindex="0">ⓘ<span class="tooltip">Number of days within which this activity must be completed.</span></span>
+              </label>
+              <input type="number" id="sla-days" class="input-full" min="0" />
+            </div>
+
+          </div><!-- /form-grid -->
+
+        </div><!-- /form-body -->
+
+      </div><!-- /inner-box -->
+
+    </div><!-- /outer-card -->
+
+    <!-- Buttons OUTSIDE outer card -->
+    <div class="bottom-buttons">
+      <button id="save-btn" class="btn-save" onclick="handleSave()">Save</button>
+      <button class="btn-prev" onclick="handlePrev()">← Prev</button>
+      <button class="btn-next" onclick="handleNext()">Next →</button>
+      <button class="btn-exit" onclick="handleExit()">Exit</button>
+    </div>
+
+  </div><!-- /page-wrapper -->
+
+  <script src="app.js"></script>
+</body>
+</html>

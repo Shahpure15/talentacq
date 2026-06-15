@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Talent Acquisition and Onboarding</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="page-wrapper">
+
+    <div class="outer-card">
+
+      <div class="system-title">Talent Acquisition and Onboarding</div>
+      <div class="module-title">Rejection Reason</div>
+
+      <div class="inner-box">
+
+        <div class="form-body">
+
+          <div class="id-message-row">
+            <div class="id-badge">Record ID: <span id="display-id">--</span></div>
+            <div id="message" class="message"></div>
+          </div>
+          <br>
+
+          <div class="form-grid" style="grid-template-columns: 1fr;">
+
+            <div class="form-row">
+              <label for="reason-code">Reason Code <span class="required">*</span>
+                <span class="info-btn" tabindex="0">ⓘ<span class="tooltip">A unique code identifying this rejection reason.</span></span>
+              </label>
+              <input type="text" id="reason-code" class="input-full" maxlength="20" autocomplete="off" oninput="handleCodeInput(this.value)" />
+            </div>
+
+            <div class="form-row">
+              <label for="reason-description">Description <span class="required">*</span>
+                <span class="info-btn" tabindex="0">ⓘ<span class="tooltip">A brief description of why a candidate was rejected.</span></span>
+              </label>
+            <textarea id="key-skills" class="input-full" maxlength="300" autocomplete="off"
+    rows="2"
+    style="resize: vertical; height: auto; padding: 6px 9px; line-height: 1.5; font-family: var(--font-base); font-size: var(--fs-base);"
+    oninput="this.style.height='auto'; this.style.height=this.scrollHeight+'px'">
+  </textarea>
+            </div>
+
+            <div class="form-row">
+              <label for="applicable-stage">Stage <span class="required">*</span>
+                <span class="info-btn" tabindex="0">ⓘ<span class="tooltip">The hiring stage at which this rejection reason applies.</span></span>
+              </label>
+              <select id="applicable-stage" class="input-full">
+                <option value="">-- Select Stage --</option>
+                <option value="Screening">Screening</option>
+                <option value="Interview">Interview</option>
+                <option value="Offer">Offer</option>
+              </select>
+            </div>
+
+          </div><!-- /form-grid -->
+
+        </div><!-- /form-body -->
+
+      </div><!-- /inner-box -->
+
+    </div><!-- /outer-card -->
+
+    <!-- Buttons OUTSIDE outer card -->
+    <div class="bottom-buttons">
+      <button id="save-btn" class="btn-save" onclick="handleSave()">Save</button>
+      <button class="btn-prev" onclick="handlePrev()">← Prev</button>
+      <button class="btn-next" onclick="handleNext()">Next →</button>
+      <button class="btn-exit" onclick="handleExit()">Exit</button>
+    </div>
+
+  </div><!-- /page-wrapper -->
+
+  <script src="app.js"></script>
+</body>
+</html>
